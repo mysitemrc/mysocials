@@ -474,3 +474,172 @@ a {
 .link--instagram {
   --icon-bg: transparent;
 }
+
+/* ==========================================================
+   Details + Quick Actions
+   ==========================================================*/
+
+.contact {
+  position: relative;
+  z-index: 1;
+  width: min(680px, 100%);
+  margin: 0 auto;
+  padding: 0 max(24px, env(safe-area-inset-right)) 64px max(24px, env(safe-area-inset-left));
+}
+
+/* ---------- Section titles ---------- */
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 36px 0 16px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #dfe5f2;
+}
+
+.section-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--blue), transparent);
+}
+
+.section-title:first-child {
+  margin-top: 0;
+}
+
+/* ---------- Details cards ---------- */
+.details {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 12px;
+  text-align: center;
+  border: 1px solid rgba(47, 139, 255, 0.35);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.detail__icon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  margin-bottom: 6px;
+  border-radius: 50%;
+  background: rgba(176, 77, 255, 0.15);
+  color: var(--pink);
+}
+
+.detail__icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.detail__label {
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.detail__value {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #fff;
+  overflow-wrap: anywhere;
+}
+
+/* ---------- Quick action buttons ---------- */
+.actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 58px; /* comfortable tap target on phones */
+  padding: 12px 18px;
+  border-radius: 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: 0 10px 24px -12px rgba(0, 0, 0, 0.8);
+  transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+}
+
+.action svg {
+  flex: none;
+  width: 20px;
+  height: 20px;
+}
+
+.action:hover,
+.action:focus-visible {
+  transform: translateY(-2px);
+  filter: brightness(1.12);
+}
+
+.action:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.action:active {
+  transform: translateY(0);
+}
+
+.action--save  { background: linear-gradient(135deg, #ff3fa4, #b04dff); }
+.action--call  { background: linear-gradient(135deg, #2f8bff, #1d57d6); }
+.action--sms   { background: linear-gradient(135deg, #b04dff, #2f8bff); }
+.action--email { background: linear-gradient(135deg, #ff3fa4, #2f8bff); }
+
+/* ---------- Phones ---------- */
+@media (max-width: 640px) {
+  .details {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .detail {
+    display: grid;
+    grid-template-columns: 38px minmax(0, 1fr);
+    align-items: center;
+    column-gap: 14px;
+    row-gap: 2px;
+    padding: 12px 16px;
+    text-align: left;
+  }
+
+  .detail__icon {
+    margin-bottom: 0;
+    grid-row: span 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .actions {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .action {
+    transition: none;
+  }
+}
